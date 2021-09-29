@@ -1,4 +1,4 @@
 type: npm
-path: /.grab
+path: /grable.properties
 behavior: before
 template: v{{.version}}
