@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"regexp"
+	"strings"
 )
 
 func main() {
@@ -12,16 +13,17 @@ func main() {
 		fmt.Println("error read file: ", err)
 	}
 	s := string(bytes)
-	findnpmrc(s)
+	vers := findnpmrc(s)
+	templateVers := "v{{.version}}"
+	result := strings.Replace(templateVers, ".version", vers, -1)
+	fmt.Println(result)
 }
 
-func findnpmrc(fileString string) {
+func findnpmrc(fileString string) string {
 	regex, _ := regexp.Compile("version=([^\t\n\f\r]*)")
 	res := regex.FindStringSubmatch(fileString)
-	fmt.Println(res)
 	if len(res) != 0 {
-		fmt.Println("____________")
-		fmt.Println(res[1])
+		return res[1]
 	}
-
+	return ""
 }
