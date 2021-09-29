@@ -1,4 +1,4 @@
 type: npm
-path: /grable.properties
+path: /contents/pom.xml
 behavior: before
 template: v{{.version}}
