@@ -1,4 +1,4 @@
-type: grandle
-path: /contents/build.gradle
+type: npm
+path: /.npmrc
 behavior: before
 template: v{{.version}}
