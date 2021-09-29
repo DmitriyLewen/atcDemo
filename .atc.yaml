@@ -1,4 +1,4 @@
 type: grandle
-path: pom.xml
+path: /contents/pom.xml
 behavior: before
 template: v{{.version}}
