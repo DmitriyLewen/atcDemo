@@ -14,7 +14,7 @@ func main() {
 	if err != nil {
 		fmt.Println("error read file: ", err)
 	}
-	fmt.Println(s)
+	fmt.Println("1:", s)
 }
 
 func findnpmrc(fileString string) {
