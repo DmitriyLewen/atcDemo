@@ -1,4 +1,4 @@
 type: npm
-path: /contents/pom.xml
+path: /.npmrc
 behavior: before
 template: v{{.version}}
