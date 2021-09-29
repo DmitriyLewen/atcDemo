@@ -1,4 +1,4 @@
 type: grandle
-path: build.gradle
+path: pom.xml
 behavior: before
 template: v{{.version}}
