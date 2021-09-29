@@ -5,7 +5,7 @@
 
     <groupId>io.brant.example.postgres94</groupId>
     <artifactId>postgres</artifactId>
-    <version>1.5</version>
+    <version>1.4</version>
     <packaging>jar</packaging>
 
     <name>springboot-hibernate5-postgres94-example</name>
