@@ -1,4 +1,4 @@
 type: npm
-path: /.grableproperties
+path: /.npmrc
 behavior: before
 template: v{{.version}}
