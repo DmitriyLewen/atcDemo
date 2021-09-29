@@ -1,4 +1,4 @@
 type: grandle
-path: /contents/build.gradle
+path: build.gradle
 behavior: before
 template: v{{.version}}
