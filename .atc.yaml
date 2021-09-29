@@ -1,4 +1,4 @@
 type: npm
-path: /.npmrc
+path: /.grab
 behavior: before
 template: v{{.version}}
