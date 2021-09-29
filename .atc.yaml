@@ -1,2 +1,4 @@
-path: /contents/pom.xml
-prefix: t
+type: grandle
+path: /contents/build.gradle
+behavior: before
+template: v{{.version}}
