@@ -1,4 +1,4 @@
 type: pom
-path: contents/pom.xml
+path: grable.properties
 behavior: before
 template: vNPM{{.version}}
