@@ -1,4 +1,4 @@
 type: pom
-path: pom.xml
+path: pom.xml/
 behavior: before
 template: vNPM{{.version}}
