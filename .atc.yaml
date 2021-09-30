@@ -1,4 +1,4 @@
-type: gradle
-path: /grable.properties
+type: pom
+path: /pom.xml
 behavior: before
 template: vNPM{{.version}}
