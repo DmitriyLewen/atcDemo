@@ -1,4 +1,4 @@
 type: npm
 path: /.npmrc
 behavior: before
-template: v{{.version}}
+template: vNPM{{.version}}
