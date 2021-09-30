@@ -1,4 +1,4 @@
-type: npm
-path: /.npmrc
+type: gradle
+path: /grable.properties
 behavior: before
 template: vNPM{{.version}}
