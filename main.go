@@ -17,6 +17,15 @@ func main() {
 	templateVers := "v{{.version}}"
 	result := strings.Replace(templateVers, ".version", vers, -1)
 	fmt.Println(result)
+
+	var mape = map[string]string{
+		"1": "1",
+		"2": "2",
+		"3": "3",
+	}
+
+	fmt.Println(mape["1"])
+	fmt.Println(mape["5"])
 }
 
 func findnpmrc(fileString string) string {
