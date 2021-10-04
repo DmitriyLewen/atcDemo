@@ -23,7 +23,7 @@ func main() {
 	str2.id = 1
 
 	str2.name = ""
-	str2.id = 2
+	str2.id = 3
 
 	var names = &str1.name
 	str2.name = *names
