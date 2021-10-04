@@ -15,8 +15,10 @@ func main() {
 	s := string(bytes)
 	vers := findnpmrc(s)
 	templateVers := "v{{.version}}"
-	result := strings.Replace(templateVers, ".version", vers, -1)
+	v := "1.0"
+	result := strings.Replace(templateVers, "{{.version}}", vers, -1)
 	fmt.Println(result)
+	fmt.Println("v" + v)
 
 	var mape = map[string]string{
 		"1": "1",
