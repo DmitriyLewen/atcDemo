@@ -28,7 +28,7 @@ func main() {
 
 	fmt.Println("contents/pom.xml : ", filepath.Base(`project/contents/pom.xml`))
 
-	fmt.Println("contents/pom.xml/ : ", filepath.Base("contents/pom.xml/"))
+	fmt.Println("contents/pom.xml/ : ", filepath.Base("contents//pom.xml/"))
 	// if fetcher == nil {
 	// 	log.Printf("Error: non support Path = %q", settings.Path)
 	// 	return
