@@ -29,6 +29,47 @@ func main() {
 	fmt.Println("contents/pom.xml : ", filepath.Base(`project/contents/pom.xml`))
 
 	fmt.Println("contents/pom.xml/ : ", filepath.Base("contents//pom.xml/"))
+
+	text := `
+## gradle.properties
+
+# Common Android settings
+android.compileSdkVersion=28
+android.applicationId=com.example
+android.targetSdkVersion=28
+android.minSdkVersion=21
+android.version=2
+android.versionName=1.2
+plugin.com.github.ben-manes.versions=0.25.0
+plugin.de.fayard.buildSrcVersions=0.6.1
+version.com.android.tools.build..gradle=3.5.0
+version.play-services-location=17.0.0
+version.bottom-navigation-bar=2.1.0
+version.lifecycle-extensions=2.0.0
+#                # available=2.1.0
+version.org.jetbrains.kotlin=1.3.31
+#                # available=1.3.50
+version.appcompat=1.1.0-rc01
+#     # available=1.1.0
+version.cardview=1.0.0
+version.core-ktx=1.0.2
+#    # available=1.1.0
+# ....
+version=1.0.34
+org.gradle.caching=true
+org.gradle.parallel=true
+org.gradle.caching.debug=false
+org.gradle.configureondemand=false
+org.gradle.daemon.idletimeout= 10800000
+org.gradle.console=auto
+#org.gradle.java.home=(path to JDK home)
+#org.gradle.warning.mode=(all,none,summary)
+#org.gradle.workers.max=(max # of worker processes)
+# org.gradle.priority=(low,normal)
+version=1.0.35`
+
+	findVers(text)
+
 	// if fetcher == nil {
 	// 	log.Printf("Error: non support Path = %q", settings.Path)
 	// 	return
@@ -70,6 +111,16 @@ func main() {
 	// 	{`template: v{{.version}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
 	// 	{`template: vVv{{.verson}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
 	// 	{`template: vvV{{version}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
+}
+
+func findVers(text string) string {
+	//regex, _ := regexp.Compile(`^version=([^\t\n\f\r]*)|[\t\n\f\r]version=([^\t\n\f\r]*)`)
+	regex, _ := regexp.Compile(`^[\t\n\f\r]*version=([^\t\n\f\r]*)`)
+	res := regex.FindStringSubmatch(text)
+	for i, r := range res {
+		fmt.Printf("res%d: %s\n", i, r)
+	}
+	return res[1]
 }
 
 func madeСaptionToTemplate(template, version string) string {
