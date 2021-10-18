@@ -1,3 +1,3 @@
 path: contents/pom.xml
-behavior: bef
-template: v{{.Version}}
+behavior: before
+template: v{{.version}}
