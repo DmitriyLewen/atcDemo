@@ -1,3 +1,3 @@
-path: contents/po.xml
-behavior: before
+path: contents/pom.xml
+behavior: bef
 template: v{{.Version}}
