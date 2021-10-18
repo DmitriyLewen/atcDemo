@@ -1,13 +1,18 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
+	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 )
 
 func main() {
+
+	jsonT()
 
 	str1 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
 	str2 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
@@ -159,4 +164,36 @@ func findnpmrc(fileString string) string {
 		return res[1]
 	}
 	return ""
+}
+
+type jsonStruct struct {
+	ar string
+}
+
+func jsonT() {
+	fmt.Println("____jsonT start_____")
+	str := []jsonStruct{
+		{"one"},
+		{"two"},
+	}
+	data, err := json.Marshal(str)
+	if err != nil {
+		log.Println(err)
+	}
+	file, err := os.OpenFile("jsonfile.txt", os.O_CREATE|os.O_RDWR, 0777)
+	if err != nil {
+		log.Println(err)
+	}
+	defer file.Close()
+	fileRead, err := os.ReadFile("jsonfile.txt")
+	if err != nil {
+		log.Println(err)
+	}
+	var titles []struct{ Title string }
+	err = json.Unmarshal(fileRead, &titles)
+	if err != nil {
+		log.Println(err)
+	}
+	file.WriteString(string(data))
+	fmt.Println("____jsonT end_____")
 }

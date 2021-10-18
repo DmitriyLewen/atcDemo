@@ -1,0 +1,3 @@
+path: contents/pom.xml
+behavior: before
+template: v{{.Version}}
