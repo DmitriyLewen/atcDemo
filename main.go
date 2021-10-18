@@ -25,7 +25,7 @@ func main() {
 	fmt.Println("regexghservise url1: ", regexghserviseNew(url1))
 	fmt.Println("regexghservise url2: ", regexghserviseNew(url2))
 
-	strm := madeСaptionToTemplate(`{{.version}}Vtee`, "5")
+	strm := madeСaptionToTemplate(`v{{.version}}Vtee`, "5")
 	fmt.Println("strm: ", strm)
 
 	regStr := "([^\t\n\f\r]*?)$"
