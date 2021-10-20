@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -11,7 +12,14 @@ import (
 )
 
 func main() {
+	resp := "ewogICAgIm5hbWUiOiAibXlfcGFja2FnZSIsCiAgICAiZGVzY3JpcHRpb24i\nOiAiIiwKICAgICJ2ZXJzaW9uIjogIjEuMC41dGVzdGJyYW5jaDEiLAogICAg\nInNjcmlwdHMiOiB7CiAgICAgICJ0ZXN0IjogImVjaG8gXCJFcnJvcjogbm8g\ndGVzdCBzcGVjaWZpZWRcIiAmJiBleGl0IDEiCiAgICB9LAogICAgInJlcG9z\naXRvcnkiOiB7CiAgICAgICJ0eXBlIjogImdpdCIsCiAgICAgICJ1cmwiOiAi\naHR0cHM6Ly9naXRodWIuY29tL21vbmF0aGVvY3RvY2F0L215X3BhY2thZ2Uu\nZ2l0IgogICAgfSwKICAgICJrZXl3b3JkcyI6IFtdLAogICAgImF1dGhvciI6\nICIiLAogICAgImxpY2Vuc2UiOiAiSVNDIiwKICAgICJidWdzIjogewogICAg\nICAidXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9tb25hdGhlb2N0b2NhdC9t\neV9wYWNrYWdlL2lzc3VlcyIKICAgIH0sCiAgICAiaG9tZXBhZ2UiOiAiaHR0\ncHM6Ly9naXRodWIuY29tL21vbmF0aGVvY3RvY2F0L215X3BhY2thZ2UiCiAg\nfQ==\n"
 
+	respStr, err := base64.StdEncoding.DecodeString(resp)
+	if err != nil {
+		log.Printf("decode err : %v", err)
+	}
+	fmt.Printf("decode: %s", respStr)
+	fmt.Println("+++++")
 	jsonT()
 
 	str1 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
