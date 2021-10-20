@@ -1,3 +1,3 @@
 path: package.json
 behavior: before
-template: NPM_v{{.Version}}
+template: v{{.Version}}

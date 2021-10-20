@@ -29,7 +29,7 @@ func main() {
 	fmt.Println("strm: ", strm)
 
 	regStr := "([^\t\n\f\r]*?)$"
-	fmt.Println("path " + regStr)
+	fmt.Println(" path " + regStr)
 
 	fmt.Println("contents/pom.xml: ", filepath.Base(`project/contents/pom.xml`))
 
