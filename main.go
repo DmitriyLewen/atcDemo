@@ -16,7 +16,7 @@ func main() {
 
 	str1 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
 	str2 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
-	fmt.Println("compare string :", str1 == str2)
+	fmt.Println("compare string  :", str1 == str2)
 
 	url1 := "https://api.github.com/repos/Codertocat/Hello-World/contents/contents/pom.xml"
 	url2 := "https://api.github.com/repos/Codertocat/Hello-World/contents/contents/pom.xml?ref=6113728f27ae82c7b1a177c8d03f9e96e0adf246"
