@@ -1,4 +1,4 @@
 path: package.json
 behavior: before
-template: v{{.Version}}testbranch
+template: v{{.Version}}test
 branch: "testbranch1"
