@@ -33,7 +33,7 @@ func main() {
 
 	fmt.Println("contents/pom.xml   : ", filepath.Base(`project/contents/pom.xml`))
 
-	fmt.Println("contents/pom.xml/ :b  ", filepath.Base("contents//pom.xml/"))
+	fmt.Println("contents/pom.xml/  :b  ", filepath.Base("contents//pom.xml/"))
 
 	text := `
 ## gradle.properties
