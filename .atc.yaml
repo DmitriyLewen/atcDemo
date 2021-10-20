@@ -1,4 +1,4 @@
-path: package.json
+# path: package.json
 # behavior: before
 # template: v{{.Version}}test
 # branch: testbranch1
