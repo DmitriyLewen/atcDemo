@@ -1,7 +1,7 @@
 {
     "name": "my_package",
     "description": "",
-    "version": "1.0.0-test_tmpl",
+    "version": "1.0.0-test_beh",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
     },
