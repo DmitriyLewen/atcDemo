@@ -31,7 +31,7 @@ func main() {
 	regStr := "([^\t\n\f\r]*?)$"
 	fmt.Println("path " + regStr)
 
-	fmt.Println("contents/pom.xml  : ", filepath.Base(`project/contents/pom.xml`))
+	fmt.Println("contents/pom.xml   : ", filepath.Base(`project/contents/pom.xml`))
 
 	fmt.Println("contents/pom.xml/ : ", filepath.Base("contents//pom.xml/"))
 
