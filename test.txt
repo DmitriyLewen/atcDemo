@@ -2,5 +2,5 @@ asdsadf
 zxcvaserwf
 zxcvvsda
 asdfreg
-reg: 1.0.0.
+reg: 1.0.1.
 asdfzxcv
