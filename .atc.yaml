@@ -1,4 +1,5 @@
 path: package.json
-# behavior: before
-template: v{{.Version}}test
-# branch: testbranch1
+behavior: before
+template: v{{.Version}}Time.Hour
+branch: testbranch1
+regexstr: "reg"

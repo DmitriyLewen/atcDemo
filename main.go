@@ -1,199 +1,159 @@
 package main
 
 import (
-	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
-	"os"
-	"path/filepath"
 	"regexp"
-	"strings"
+
+	"gopkg.in/yaml.v2"
 )
 
+var errUnmarshal = errors.New("unmarshal err")
+
+var defaultConfFiles = map[string]string{
+	"app/build.gradle": `versionName "([^\t\n\f\r]+)"`,
+	"package.json":     `"version": "([^\t\n\f\r]+)",`,
+	"pubspec.yaml":     `version: ([^\t\n\f\r]+)`,
+	"contents/pom.xml": `<modelVersion>(.+)</modelVersion>`, //mb add to regex?????
+}
+
 func main() {
-
-	jsonT()
-
-	str1 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
-	str2 := "Cjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiCgl4c2k6c2NoZW1hTG9jYXRpb249Imh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL1BPTS80LjAuMCBodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy94c2QvbWF2ZW4tNC4wLjAueHNkIj4KCTx2ZXJzaW9uPjU8L3ZlcnNpb24"
-	fmt.Println("compare string  :", str1 == str2)
-
-	url1 := "https://api.github.com/repos/Codertocat/Hello-World/contents/contents/pom.xml"
-	url2 := "https://api.github.com/repos/Codertocat/Hello-World/contents/contents/pom.xml?ref=6113728f27ae82c7b1a177c8d03f9e96e0adf246"
-	fmt.Println("regexghservise url1: ", regexghserviseOld(url1))
-	fmt.Println("regexghservise url2: ", regexghserviseOld(url2))
-	fmt.Println("regexghservise url1: ", regexghserviseNew(url1))
-	fmt.Println("regexghservise url2: ", regexghserviseNew(url2))
-
-	strm := madeСaptionToTemplate(`v{{.version}}Vtee`, "5")
-	fmt.Println("strm:  ", strm)
-
-	regStr := "([^\t\n\f\r]*?)$"
-	fmt.Println("path " + regStr)
-
-	fmt.Println("contents/pom.xml    : ", filepath.Base(`project/contents/pom.xml`))
-
-	fmt.Println("contents/pom.xml/:b  ", filepath.Base("contents//pom.xml/"))
-
-	text := `
-## gradle.properties
-
-# Common Android settings
-android.compileSdkVersion=28
-android.applicationId=com.example
-android.targetSdkVersion=28
-android.minSdkVersion=21
-android.version=2
-android.versionName=1.2
-plugin.com.github.ben-manes.versions=0.25.0
-plugin.de.fayard.buildSrcVersions=0.6.1
-version.com.android.tools.build..gradle=3.5.0
-version.play-services-location=17.0.0
-version.bottom-navigation-bar=2.1.0
-version.lifecycle-extensions=2.0.0
-#                # available=2.1.0
-version.org.jetbrains.kotlin=1.3.31
-#                # available=1.3.50
-version.appcompat=1.1.0-rc01
-#     # available=1.1.0
-version.cardview=1.0.0
-version.core-ktx=1.0.2
-#    # available=1.1.0
-# ....
-version=1.0.34
-org.gradle.caching=true
-org.gradle.parallel=true
-org.gradle.caching.debug=false
-org.gradle.configureondemand=false
-org.gradle.daemon.idletimeout= 10800000
-org.gradle.console=auto
-#org.gradle.java.home=(path to JDK home)
-#org.gradle.warning.mode=(all,none,summary)
-#org.gradle.workers.max=(max # of worker processes)
-# org.gradle.priority=(low,normal)
-version=1.0.35`
-
-	findVers(text)
-
-	// if fetcher == nil {
-	// 	log.Printf("Error: non support Path = %q", settings.Path)
-	// 	return
+	// for defPath, defReg := range defaultConfFiles {
+	// 	log.Printf("path: %s,  req: %s", defPath, defReg)
 	// }
-
-	// regStr := "([^\t\n\f\r]*)"
-	// regexPath, err := regexp.Compile("path: " + regStr)
-	// if err != nil {
-	// 	return err
-	// }
-	// regexTemplate, _ := regexp.Compile("template: " + regStr)
-	// if err != nil {
-	// 	return err
-	// }
-	// regexBehavior, _ := regexp.Compile("behavior: " + regStr)
-	// if err != nil {
-	// 	return err
-	// }
-	// path := regexPath.FindStringSubmatch(string(content))
-	// template := regexTemplate.FindStringSubmatch(string(content))
-	// behavior := regexBehavior.FindStringSubmatch(string(content))
-	// if len(path) > 0 {
-	// 	atcSettingsPtr.Path = path[1]
-	// }
-	// if len(template) > 0 {
-	// 	atcSettingsPtr.Template = template[1]
-	// }
-	// if len(behavior) > 0 {
-	// 	atcSettingsPtr.Behavior = behavior[1]
-	// }
-	// //err := yaml.Unmarshal([]byte(content), atcSettingsPtr)
-	// return nil
-
-	// {`template: v{{.version}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
-	// 	{`template: vTest{{.version}}`, `Added a new version for "Codertocat/Hello-World": "vTest5"`, `vTest5`},
-	// 	{`template: {{.version}}Vte`, `Added a new version for "Codertocat/Hello-World": "5Vte"`, `5Vte`},
-	// 	{`template: vVv{.version}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
-	// 	{`template: `, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
-	// 	{`template: v{{.version}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
-	// 	{`template: vVv{{.verson}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
-	// 	{`template: vvV{{version}}`, `Added a new version for "Codertocat/Hello-World": "v5"`, `v5`},
+	content := `
+	plugins {
+		id 'com.android.application'
+		id 'kotlin-android'
+		id 'kotlin-kapt'
+		id 'dagger.hilt.android.plugin'
+	}
+	
+	android {
+		compileSdk 31
+	
+		defaultConfig {
+			applicationId "com.plcoding.cryptocurrencyappyt"
+			minSdk 21
+			targetSdk 31
+			versionCode 1
+			versionName "1.1"
+	
+			testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+			vectorDrawables {
+				useSupportLibrary true
+			}
+		}
+	
+		buildTypes {
+			release {
+				minifyEnabled false
+				proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			}
+		}
+		compileOptions {
+			sourceCompatibility JavaVersion.VERSION_1_8
+			targetCompatibility JavaVersion.VERSION_1_8
+		}
+		kotlinOptions {
+			jvmTarget = '1.8'
+			useIR = true
+		}
+		buildFeatures {
+			compose true
+		}
+		composeOptions {
+			kotlinCompilerExtensionVersion compose_version
+			kotlinCompilerVersion '1.5.21'
+		}
+		packagingOptions {
+			resources {
+				excludes += '/META-INF/{AL2.0,LGPL2.1}'
+			}
+		}
+	}
+	
+	dependencies {
+	
+		implementation 'androidx.core:core-ktx:1.6.0'
+		implementation 'androidx.appcompat:appcompat:1.3.1'
+		implementation 'com.google.android.material:material:1.4.0'
+		implementation "androidx.compose.ui:ui:$compose_version"
+		implementation "androidx.compose.material:material:$compose_version"
+		implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+		implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+		implementation 'androidx.activity:activity-compose:1.3.1'
+		testImplementation 'junit:junit:4.+'
+		androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+		androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+		androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+		debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+	
+		// Compose dependencies
+		implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+		implementation "androidx.navigation:navigation-compose:2.4.0-alpha08"
+		implementation "com.google.accompanist:accompanist-flowlayout:0.17.0"
+	
+		// Coroutines
+		implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1'
+		implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
+	
+		// Coroutine Lifecycle Scopes
+		implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+		implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
+	
+		//Dagger - Hilt
+		implementation "com.google.dagger:hilt-android:2.38.1"
+		kapt "com.google.dagger:hilt-android-compiler:2.37"
+		implementation "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+		kapt "androidx.hilt:hilt-compiler:1.0.0"
+		implementation 'androidx.hilt:hilt-navigation-compose:1.0.0-alpha03'
+	
+		// Retrofit
+		implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+		implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+		implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.2"
+		implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+	}`
+	regex, _ := regexp.Compile(`versionNameaaaa ".+"`)
+	res := regex.FindString(string(content))
+	fmt.Printf("find string:%s", res)
 }
 
-func findVers(text string) string {
-	//regex, _ := regexp.Compile(`^version=([^\t\n\f\r]*)|[\t\n\f\r]version=([^\t\n\f\r]*)`)
-	regex, _ := regexp.Compile(`^[\t\n\f\r]*version=([^\t\n\f\r]*)`)
-	res := regex.FindStringSubmatch(text)
-	for i, r := range res {
-		fmt.Printf("res%d: %s\n", i, r)
+func GetVersion(path, regex string) (string, error) {
+	log.Printf("GetVersion in, path: %s, regex: %s", path, regex)
+	if path != "contents/pom.xml" {
+		return "", errUnmarshal
 	}
-	return res[1]
+	return "1.0", nil
 }
 
-func madeСaptionToTemplate(template, version string) string {
-	if !strings.Contains(template, "{{.version}}") {
-		return "v" + version
+type AtcSettings struct {
+	Path          string `yaml:"path"`
+	Behavior      string `yaml:"behavior"`
+	Template      string `yaml:"template"`
+	Branch        string `yaml:"branch"`
+	RegexSettings struct {
+		UseReg bool   `yaml:",flow"`
+		RegStr string `yaml:",flow"`
 	}
-	return strings.Replace(template, "{{.version}}", version, -1)
 }
 
-func regexghserviseOld(url string) bool {
-	matched, err := regexp.MatchString("pom\\.xml\\?ref=", url)
-	if err != nil {
-		return false
+func GetYaml() {
+	str := `
+path: package.json
+behavior: before
+template: v{{.Version}}
+branch: testbranch1
+regexsettings:
+  usereg: true
+  regstr: 
+`
+	settings := AtcSettings{}
+	yaml.Unmarshal([]byte(str), &settings)
+	if !settings.RegexSettings.UseReg {
+		log.Println("not use regex")
 	}
-	return matched
-}
-
-func regexghserviseNew(url string) bool {
-	matched, err := regexp.MatchString("pom\\.xml$", url)
-	if err != nil {
-		return false
-	}
-	return matched
-}
-func findnpmrc(fileString string) string {
-	reg := `contents/pom.xml|gradle.properties|.npmrc`
-	regex, _ := regexp.Compile(reg)
-	str1 := `gradle.properties`
-	str2 := `contents/pom.xml`
-	matched, _ := regexp.MatchString(reg, str1)
-	fmt.Println(matched)
-	matched, _ = regexp.MatchString(reg, str2)
-	fmt.Println(matched)
-	res := regex.FindStringSubmatch(fileString)
-	if len(res) != 0 {
-		return res[1]
-	}
-	return ""
-}
-
-type jsonStruct struct {
-	ar string
-}
-
-func jsonT() {
-	fmt.Println("____jsonT start_____")
-	str := []jsonStruct{
-		{"one"},
-		{"two"},
-	}
-	data, err := json.Marshal(str)
-	if err != nil {
-		log.Println(err)
-	}
-	file, err := os.OpenFile("jsonfile.txt", os.O_CREATE|os.O_RDWR, 0777)
-	if err != nil {
-		log.Println(err)
-	}
-	defer file.Close()
-	fileRead, err := os.ReadFile("jsonfile.txt")
-	if err != nil {
-		log.Println(err)
-	}
-	var titles []struct{ Title string }
-	err = json.Unmarshal(fileRead, &titles)
-	if err != nil {
-		log.Println(err)
-	}
-	file.WriteString(string(data))
-	fmt.Println("____jsonT end_____")
+	fmt.Println(settings)
 }
