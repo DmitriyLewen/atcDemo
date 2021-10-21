@@ -1,5 +1,4 @@
-path: test.txt
-behavior: after
-template: v{{.Version}}-test.txt
-# branch: testbranch1
-regexstr: "reg: (.{0,9})"
+path: "package.json"
+behavior: "after"
+template: "{{.Version}}-alfaNPM"
+branch: "release"
