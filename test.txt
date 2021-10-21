@@ -2,6 +2,6 @@ asdsadf
 zxcvaserwf
 zxcvvsda
 asdfreg
-reg: 1.0.1
+reg: 1.0.2
 asdfzxcv
 andrvers: 5.4.2.
