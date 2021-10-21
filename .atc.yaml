@@ -2,4 +2,4 @@ path: test.txt
 behavior: before
 template: v{{.Version}}
 # branch: testbranch1
-regexstr: "reg: .{0,9}"
+regexstr: "reg: (.{0,9})"
