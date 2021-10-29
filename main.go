@@ -4,10 +4,12 @@ import (
 	"errors"
 	"log"
 	"regexp"
+
+	"github.com/hashicorp/go-version"
 )
 
 func main() {
-
+	version.NewVersion("1.0.1")
 }
 
 var unmarshalBuildGradle = func(content []byte) error {

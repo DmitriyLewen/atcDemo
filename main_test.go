@@ -54,6 +54,15 @@ const (
 			minSdk 21
 			vectorDrawables {
 				useSupportLibrary true
+				vectorDrawables {
+					useSupportLibrary true
+				}
+				vectorDrawables {
+					useSupportLibrary true
+					vectorDrawables {
+						useSupportLibrary true
+					}
+				}
 			}
 			targetSdk 31
 			versionCode 1
@@ -61,6 +70,9 @@ const (
 	versionName "1 before 1 after"
 			vectorDrawables {
 				useSupportLibrary true
+				vectorDrawables {
+					useSupportLibrary true
+				}
 			}
 	
 			testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -158,17 +170,17 @@ const (
 )
 
 func TestUnmarshalGradle(t *testing.T) {
-	regexStr := `defaultConfig {[^{}]*([^{}]*{[^{}]*}[^{}]*)*[^{}]*\n[\t ]*versionName "(.+)"`
+	regexStr := `defaultConfig {[^{}]*([^{}]*{[\s\S]*}[^{}]*)*[^{}]*\n[\t ]*versionName "(.+)"`
 	regex, err := regexp.Compile(regexStr)
 	if err != nil {
 		t.Error(err)
 	}
-	res := regex.FindStringSubmatch(testStr)
+	res := regex.FindAllStringSubmatch(testStr, -1)
 	if len(res) == 0 {
 		t.Error("regex err: ", res)
 	}
 	for r := range res {
-		log.Println(res[r])
+		log.Println(res[r][2])
 	}
 
 }

@@ -2,4 +2,4 @@ module atcdemo
 
 go 1.16
 
-require gopkg.in/yaml.v2 v2.4.0
+require github.com/hashicorp/go-version v1.3.0
