@@ -12,7 +12,7 @@ func main() {
 	version.NewVersion("1.0.1")
 }
 
-var unmarshalBuildGradle = func(content []byte) error {
+var UnmarshalBuildGradle = func(content []byte) error {
 	regex, _ := regexp.Compile(`versionName "([^\t\n\f\r]+)"`)
 	res := regex.FindStringSubmatch(string(content))
 	if len(res) == 0 {
