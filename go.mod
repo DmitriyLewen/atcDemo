@@ -1,4 +1,4 @@
-module github.com/dmitriylewen/atcdemo
+module github.com/DmitriyLewen/atcDemo
 
 go 1.16
 
