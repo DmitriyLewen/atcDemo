@@ -22,3 +22,7 @@ var UnmarshalBuildGradle = func(content []byte) error {
 	log.Println(vers)
 	return nil
 }
+
+func Sum(a, b int) int {
+	return a + b
+}
