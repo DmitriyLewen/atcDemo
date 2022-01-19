@@ -1,10 +1,14 @@
 ## Description
+
 ## Related issues
 - Close #XXX
+- 
 ## Related PRs
 - [ ] #XXX
 - [ ] #YYY
+
 Remove this section if you don't have related PRs.
+
 ## Checklist
 - [ ] I've read the [guidelines for contributing](/path/to/CONTRIBUTING.md) to this repository.
 - [ ] I've chosen the PR title carefully since it will be included in the release notes.
