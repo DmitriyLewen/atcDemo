@@ -26,11 +26,11 @@ jobs:
         with:
           path: src/github.com/DmitriyLewen/atcDemo
 
-      # - name: Set env
-      #   shell: bash
-      #   run: |
-      #     echo "GOPATH=${{ github.workspace }}" >> $GITHUB_ENV
-      #     echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
+      - name: Set env
+        shell: bash
+        run: |
+          echo "GOPATH=${{ github.workspace }}" >> $GITHUB_ENV
+          echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
       #
       # Build
       #
@@ -60,7 +60,7 @@ jobs:
           GOOS: linux
           GOARCH: amd64
         run: |
-          make build-bunaries
+          make build-binaries
           mv main bin_amd64
       - name: Build arm64
         env:
@@ -69,7 +69,7 @@ jobs:
           CC: aarch64-linux-gnu-gcc
           CGO_ENABLED: 1
         run: |
-          make build-bunaries
+          make build-binaries
           mv main bin_arm64
       - name: Build s390x
         env:
@@ -78,7 +78,7 @@ jobs:
           CGO_ENABLED: 1
           CC: s390x-linux-gnu-gcc
         run: |
-          make build-bunaries
+          make build-binaries
           mv main bin_s390x
       - name: Build ppc64le
         env:
@@ -87,7 +87,7 @@ jobs:
           CGO_ENABLED: 1
           CC: powerpc64le-linux-gnu-gcc
         run: |
-          make build-bunaries
+          make build-binaries
           mv main bin_ppc64le
       #
       # Upload

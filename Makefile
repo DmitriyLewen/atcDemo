@@ -1,2 +1,2 @@
-build-bunaries: 
+build-binaries: 
 	go build main.go
