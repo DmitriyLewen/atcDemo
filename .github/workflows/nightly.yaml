@@ -25,82 +25,81 @@ jobs:
         with:
           version: v0.183.0
           args: build -f=goreleaser.yml --snapshot --rm-dist
-      - run: ls ./dist/ -ahl
 
       # Upload
       - name: Upload artifacts (darwin_amd64)
         uses: actions/upload-artifact@v1
         with:
-          name: darwin_amd64
-          path: dist/trivy
-      - name: Upload artifacts (darwin_arm64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: darwin_arm64
-          path: dist/trivy
-      - name: Upload artifacts (freebsd_386)
-        uses: actions/upload-artifact@v1
-        with:
-          name: freebsd_386
-          path: dist/trivy
-      - name: Upload artifacts (freebsd_arm_7)
-        uses: actions/upload-artifact@v1
-        with:
-          name: freebsd_arm_7
-          path: dist/trivy
-      - name: Upload artifacts (freebsd_arm64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: freebsd_arm64
-          path: dist/trivy
-      - name: Upload artifacts (linux_386)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_386
-          path: dist/trivy
-      - name: Upload artifacts (linux_amd64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_amd64
-          path: dist/trivy
-      - name: Upload artifacts (linux_arm_7)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_arm_7
-          path: dist/trivy
-      - name: Upload artifacts (linux_arm64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_arm64
-          path: dist/trivy
-      - name: Upload artifacts (linux_ppc64le)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_ppc64le
-          path: dist/trivy
-      - name: Upload artifacts (linux_s390x)
-        uses: actions/upload-artifact@v1
-        with:
-          name: linux_s390x
-          path: dist/trivy
-      - name: Upload artifacts (openbsd_386)
-        uses: actions/upload-artifact@v1
-        with:
-          name: openbsd_386
-          path: dist/trivy
-      - name: Upload artifacts (openbsd_amd64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: openbsd_amd64
-          path: dist/trivy
-      - name: Upload artifacts (openbsd_arm_7)
-        uses: actions/upload-artifact@v1
-        with:
-          name: openbsd_arm_7
-          path: dist/trivy
-      - name: Upload artifacts (openbsd_arm64)
-        uses: actions/upload-artifact@v1
-        with:
-          name: openbsd_arm64
-          path: dist/trivy
+          name: trivy
+          path: dist/trivy/
+      # - name: Upload artifacts (darwin_arm64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: darwin_arm64
+      #     path: dist/trivy
+      # - name: Upload artifacts (freebsd_386)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: freebsd_386
+      #     path: dist/trivy
+      # - name: Upload artifacts (freebsd_arm_7)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: freebsd_arm_7
+      #     path: dist/trivy
+      # - name: Upload artifacts (freebsd_arm64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: freebsd_arm64
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_386)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_386
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_amd64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_amd64
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_arm_7)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_arm_7
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_arm64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_arm64
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_ppc64le)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_ppc64le
+      #     path: dist/trivy
+      # - name: Upload artifacts (linux_s390x)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: linux_s390x
+      #     path: dist/trivy
+      # - name: Upload artifacts (openbsd_386)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: openbsd_386
+      #     path: dist/trivy
+      # - name: Upload artifacts (openbsd_amd64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: openbsd_amd64
+      #     path: dist/trivy
+      # - name: Upload artifacts (openbsd_arm_7)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: openbsd_arm_7
+      #     path: dist/trivy
+      # - name: Upload artifacts (openbsd_arm64)
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: openbsd_arm64
+      #     path: dist/trivy
       
