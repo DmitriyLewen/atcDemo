@@ -25,6 +25,8 @@ jobs:
         with:
           version: v0.183.0
           args: build -f=goreleaser.yml --snapshot --rm-dist
+      -run: ls ./dist -ahl
+      -run: ls ./dist/trivy_darwin_amd64 -ahl
 
       # Upload
       - name: Upload artifacts (darwin_amd64)
