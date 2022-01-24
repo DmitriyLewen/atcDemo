@@ -81,7 +81,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: goreleaser build --snapshot --rm-dist
+          args: build --snapshot --rm-dist
       - run: pwd
       - run: ls -ahl
 
