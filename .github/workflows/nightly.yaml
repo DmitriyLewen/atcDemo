@@ -104,19 +104,19 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: linux_arm64
-          path: src/github.com/DmitriyLewen/atcDemo/bin_arm64
+          path: bin_arm64
 
       - name: Upload artifacts (linux_s390x)
         uses: actions/upload-artifact@v1
         with:
           name: linux_s390x
-          path: src/github.com/DmitriyLewen/atcDemo/bin_s390x
+          path: bin_s390x
 
       - name: Upload artifacts (linux_ppc64le)
         uses: actions/upload-artifact@v1
         with:
           name: linux_ppc64le
-          path: src/github.com/DmitriyLewen/atcDemo/bin_ppc64le
+          path: bin_ppc64le
 
   # windows:
   #   name: Windows
