@@ -82,8 +82,8 @@ jobs:
         with:
           version: v0.183.0
           args: release --rm-dist
-        run: pwd
-        run: ls -ahl
+      - run: pwd
+      - run: ls -ahl
 
   #     # Upload
   #     - name: Upload artifacts (linux_amd64)
