@@ -97,7 +97,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: linux_amd64
-          path: src/github.com/DmitriyLewen/atcDemo/bin_amd64
+          # path: src/github.com/DmitriyLewen/atcDemo/bin_amd64
 
       - name: Upload artifacts (linux_arm64)
         uses: actions/upload-artifact@v1
