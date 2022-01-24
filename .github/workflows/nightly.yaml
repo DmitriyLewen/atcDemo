@@ -20,116 +20,87 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      # - name: Install dependencies
-      #   run: |
-      #     sudo add-apt-repository "deb [arch=arm64,s390x,ppc64el] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -sc) main" || true
-      #     sudo add-apt-repository "deb [arch=arm64,s390x,ppc64el] http://ports.ubuntu.com/ubuntu-ports/ $(lsb_release -sc)-updates main" || true
-      #     sudo dpkg --add-architecture arm64
-      #     sudo dpkg --add-architecture s390x
-      #     sudo dpkg --add-architecture ppc64el
-      #     sudo apt-get update || true
-      #     sudo apt-get install -y \
-      #       crossbuild-essential-arm64 \
-      #       crossbuild-essential-s390x \
-      #       crossbuild-essential-ppc64el \
-      #       libseccomp-dev:amd64 \
-      #       libseccomp-dev:arm64 \
-      #       libseccomp-dev:s390x \
-      #       libseccomp-dev:ppc64el \
-      #       libbtrfs-dev:amd64 \
-      #       libbtrfs-dev:arm64 \
-      #       libbtrfs-dev:s390x \
-      #       libbtrfs-dev:ppc64el
-
-      # Build
-      # - name: Build amd64
-      #   env:
-      #     GOOS: linux
-      #     GOARCH: amd64
-      #   run: |
-      #     make build-binaries
-      #     mv main bin_amd64
-      # - name: Build arm64
-      #   env:
-      #     GOOS: linux
-      #     GOARCH: arm64
-      #     CC: aarch64-linux-gnu-gcc
-      #     CGO_ENABLED: 1
-      #   run: |
-      #     make build-binaries
-      #     mv main bin_arm64
-      # - name: Build s390x
-      #   env:
-      #     GOOS: linux
-      #     GOARCH: s390x
-      #     CGO_ENABLED: 1
-      #     CC: s390x-linux-gnu-gcc
-      #   run: |
-      #     make build-binaries
-      #     mv main bin_s390x
-      # - name: Build ppc64le
-      #   env:
-      #     GOOS: linux
-      #     GOARCH: ppc64le
-      #     CGO_ENABLED: 1
-      #     CC: powerpc64le-linux-gnu-gcc
-      #   run: |
-      #     make build-binaries
-      #     mv main bin_ppc64le
-
       - name: Release
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: build --snapshot --rm-dist
-      - run: pwd
+          args: build -f=goreleaser.yml --snapshot --rm-dist
       - run: ls ./dist/ -ahl
 
-  #     # Upload
-  #     - name: Upload artifacts (linux_amd64)
-  #       uses: actions/upload-artifact@v1
-  #       with:
-  #         name: linux_amd64
-  #         path: bin_amd64
-
-  #     - name: Upload artifacts (linux_arm64)
-  #       uses: actions/upload-artifact@v1
-  #       with:
-  #         name: linux_arm64
-  #         path: bin_arm64
-
-  #     - name: Upload artifacts (linux_s390x)
-  #       uses: actions/upload-artifact@v1
-  #       with:
-  #         name: linux_s390x
-  #         path: bin_s390x
-
-  #     - name: Upload artifacts (linux_ppc64le)
-  #       uses: actions/upload-artifact@v1
-  #       with:
-  #         name: linux_ppc64le
-  #         path: bin_ppc64le
-
-  # windows:
-  #   name: Windows
-  #   runs-on: windows-latest
-
-  #   steps:
-  #     - uses: actions/setup-go@v2
-  #       with:
-  #         go-version: '1.16'
-
-  #     - uses: actions/checkout@v2
-
-  #     - name: Build amd64
-  #       env:
-  #         GOOS: windows
-  #         GOARCH: amd64
-  #       run: |
-  #         make build-binaries
-  #         mv main.exe bin_amd64.exe
-  #     - name: Upload artifacts (windows_amd64)
-  #       uses: actions/upload-artifact@v1
-  #       with:
-  #         name: windows_amd64
-  #         path: bin_amd64.exe
+      # Upload
+      - name: Upload artifacts (darwin_amd64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: darwin_amd64
+          path: dist/trivy
+      - name: Upload artifacts (darwin_arm64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: darwin_arm64
+          path: dist/trivy
+      - name: Upload artifacts (freebsd_386)
+        uses: actions/upload-artifact@v1
+        with:
+          name: freebsd_386
+          path: dist/trivy
+      - name: Upload artifacts (freebsd_arm_7)
+        uses: actions/upload-artifact@v1
+        with:
+          name: freebsd_arm_7
+          path: dist/trivy
+      - name: Upload artifacts (freebsd_arm64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: freebsd_arm64
+          path: dist/trivy
+      - name: Upload artifacts (linux_386)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_386
+          path: dist/trivy
+      - name: Upload artifacts (linux_amd64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_amd64
+          path: dist/trivy
+      - name: Upload artifacts (linux_arm_7)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_arm_7
+          path: dist/trivy
+      - name: Upload artifacts (linux_arm64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_arm64
+          path: dist/trivy
+      - name: Upload artifacts (linux_ppc64le)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_ppc64le
+          path: dist/trivy
+      - name: Upload artifacts (linux_s390x)
+        uses: actions/upload-artifact@v1
+        with:
+          name: linux_s390x
+          path: dist/trivy
+      - name: Upload artifacts (openbsd_386)
+        uses: actions/upload-artifact@v1
+        with:
+          name: openbsd_386
+          path: dist/trivy
+      - name: Upload artifacts (openbsd_amd64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: openbsd_amd64
+          path: dist/trivy
+      - name: Upload artifacts (openbsd_arm_7)
+        uses: actions/upload-artifact@v1
+        with:
+          name: openbsd_arm_7
+          path: dist/trivy
+      - name: Upload artifacts (openbsd_arm64)
+        uses: actions/upload-artifact@v1
+        with:
+          name: openbsd_arm64
+          path: dist/trivy
+      
