@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: trivy
-          path: dist/*/trivy
+          path: ./dist/trivy_darwin_arm64/trivy
       # - name: Upload artifacts (darwin_arm64)
       #   uses: actions/upload-artifact@v1
       #   with:
