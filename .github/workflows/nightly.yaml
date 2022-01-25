@@ -52,7 +52,7 @@ jobs:
           version: v0.183.0
           args: release --snapshot --skip-publish --rm-dist
 
-      # Upload artifacts
+      # Upload artifacts 
       - name: Upload artifacts (bom.json)
         uses: actions/upload-artifact@v2
         with:
