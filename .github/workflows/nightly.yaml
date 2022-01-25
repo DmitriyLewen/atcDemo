@@ -4,7 +4,7 @@ on:
     - cron: '0 0 * * *' # Every day at midnight
   push:
     paths:
-      - '.github/workflows/nightly.yaml'
+      - '.github/workflows/nightly.yaml' 
 
 env:
   GO_VERSION: "1.17"

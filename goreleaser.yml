@@ -1,7 +1,7 @@
 project_name: trivy
 builds:
   -
-    main: cmd/trivy/main.go
+    main: ./main.go
     binary: trivy
     ldflags:
       - -s -w
