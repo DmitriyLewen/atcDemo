@@ -254,7 +254,7 @@ jobs:
         with:
           name: trivy_OpenBSD-ARM.tar.gz
           path: ./dist/trivy_*OpenBSD-ARM.tar.gz 
-          if-no-files-found: error
+          if-no-files-found: error 
 
       - name: Upload artifacts (OpenBSD-ARM64.tar.gz)
         uses: actions/upload-artifact@v2
