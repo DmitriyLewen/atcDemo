@@ -1,4 +1,4 @@
-name: Nightly
+name: Nightly-build
 on:
   # schedule:
   #   - cron: '0 0 * * *' # Every day at midnight
@@ -9,8 +9,8 @@ on:
     branches: [  ]
 
 jobs:
-  linux:
-    name: Linux
+  Nightly-build:
+    name: Nightly-build
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +24,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: release -f=goreleaser.yml --snapshot --skip-publish --rm-dist
+          args: release --snapshot --skip-publish --rm-dist
 
       # Upload
       - name: Upload artifacts (FreeBSD-32bit.tar.gz)
