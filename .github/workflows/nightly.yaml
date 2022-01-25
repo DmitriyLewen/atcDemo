@@ -30,6 +30,7 @@ jobs:
       - name: Upload artifacts (FreeBSD-32bit.tar.gz)
         uses: actions/upload-artifact@v2
         with:
+          name: trivy_FreeBSD-32bit.tar.gz
           path: ./dist/trivy_*FreeBSD-32bit.tar.gz
 
       - name: Upload artifacts (FreeBSD-64bit.tar.gz)
