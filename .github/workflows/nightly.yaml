@@ -24,7 +24,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: release -f=goreleaser.yml --snapshot --rm-dist
+          args: release --nightly
 
       # Upload
       - name: Upload artifacts (darwin_amd64)
