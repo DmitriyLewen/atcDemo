@@ -93,7 +93,7 @@ brews:
 
 dockers:
   - image_templates:
-      - "docker.io/aquasec/trivy:{{ .Version }}-amd64"
+      - "docker.io/dmitriylewen/trivy:{{ .Version }}-amd64"
       # - "docker.io/aquasec/trivy:latest-amd64"
       # - "ghcr.io/aquasecurity/trivy:{{ .Version }}-amd64"
       # - "ghcr.io/aquasecurity/trivy:latest-amd64"
@@ -117,7 +117,7 @@ dockers:
     extra_files:
     - contrib/
   - image_templates:
-      - "docker.io/aquasec/trivy:{{ .Version }}-arm64"
+      - "docker.io/dmitriylewen/trivy:{{ .Version }}-arm64"
       # - "docker.io/aquasec/trivy:latest-arm64"
       # - "ghcr.io/aquasecurity/trivy:{{ .Version }}-arm64"
       # - "ghcr.io/aquasecurity/trivy:latest-arm64"
@@ -142,10 +142,10 @@ dockers:
     - contrib/
 
 docker_manifests:
-  - name_template: 'aquasec/trivy:{{ .Version }}'
+  - name_template: 'dmitriylewen/trivy:{{ .Version }}'
     image_templates:
-    - 'aquasec/trivy:{{ .Version }}-amd64'
-    - 'aquasec/trivy:{{ .Version }}-arm64'
+    - 'dmitriylewen/trivy:{{ .Version }}-amd64'
+    - 'dmitriylewen/trivy:{{ .Version }}-arm64'
   # - name_template: 'ghcr.io/aquasecurity/trivy:{{ .Version }}'
   #   image_templates:
   #   - 'ghcr.io/aquasecurity/trivy:{{ .Version }}-amd64'
