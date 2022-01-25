@@ -77,7 +77,7 @@ jobs:
         with:
           path: ./dist/trivy_*Linux-64bit.tar.gz
 
-       - name: Upload artifacts (Linux-ARM.deb)
+      - name: Upload artifacts (Linux-ARM.deb)
         uses: actions/upload-artifact@v2
         with:
           path: ./dist/trivy_*Linux-ARM.deb
@@ -92,7 +92,7 @@ jobs:
         with:
           path: ./dist/trivy_*Linux-ARM.tar.gz
 
-       - name: Upload artifacts (Linux-ARM64.deb)
+      - name: Upload artifacts (Linux-ARM64.deb)
         uses: actions/upload-artifact@v2
         with:
           path: ./dist/trivy_*Linux-ARM64.deb
@@ -107,7 +107,7 @@ jobs:
         with:
           path: ./dist/trivy_*Linux-ARM64.tar.gz       
 
-       - name: Upload artifacts (Linux-PPC64LE.deb)
+      - name: Upload artifacts (Linux-PPC64LE.deb)
         uses: actions/upload-artifact@v2
         with:
           path: ./dist/trivy_*Linux-PPC64LE.deb
@@ -122,7 +122,7 @@ jobs:
         with:
           path: ./dist/trivy_*Linux-PPC64LE.tar.gz     
 
-       - name: Upload artifacts (Linux-s390x.deb)
+      - name: Upload artifacts (Linux-s390x.deb)
         uses: actions/upload-artifact@v2
         with:
           path: ./dist/trivy_*Linux-s390x.deb
@@ -165,4 +165,4 @@ jobs:
       - name: Upload artifacts (OpenBSD-ARM64.tar.gz)
         uses: actions/upload-artifact@v2
         with:
-          path: ./dist/trivy_*OpenBSD-ARM64.tar.gz                                                    
+          path: ./dist/trivy_*OpenBSD-ARM64.tar.gz
