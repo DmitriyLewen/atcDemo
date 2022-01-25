@@ -52,7 +52,7 @@ jobs:
       - name: Upload artifacts (bom.json)
         uses: actions/upload-artifact@v2
         with:
-          name: trivy_bom.json
+          name: bom.json
           path: ./bom.json
           if-no-files-found: error
       
