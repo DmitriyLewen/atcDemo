@@ -23,6 +23,6 @@ var UnmarshalBuildGradle = func(content []byte) error {
 	return nil
 }
 
-func Sum(a, c int) int {
-	return a + c
+func Sum(a, b int) int {
+	return a + b
 }
