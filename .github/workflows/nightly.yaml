@@ -1,10 +1,10 @@
 name: Nightly-build
 on:
-  schedule:
-    - cron: '0 0 * * *' # Every day at midnight
   push:
-    paths:
-      - '.github/workflows/nightly.yaml' 
+    - branches:
+      - 'master'
+    - paths:
+      - '.github/workflows/nightly.yaml' #TODO remove after testing
 
 env:
   GO_VERSION: "1.17"
