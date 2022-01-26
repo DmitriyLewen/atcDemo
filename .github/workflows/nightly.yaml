@@ -1,9 +1,9 @@
 name: Nightly-build
 on:
   push:
-    - branches:
+    branches:
       - 'master'
-    - paths:
+    paths:
       - '.github/workflows/nightly.yaml' #TODO remove after testing
 
 env:
