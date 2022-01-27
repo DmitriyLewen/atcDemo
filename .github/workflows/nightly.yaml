@@ -54,6 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: ./dist/**/trivy
+          path: ./dist/trivy_*checksums.txt
           if-no-files-found: error
       
       # - name: Upload artifacts (checksums.txt)
