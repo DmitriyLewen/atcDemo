@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           path: |
-          ./dist/**/trivy
+          ./dist/trivy_*FreeBSD-32bit.tar.gz
           ./dist/trivy_*checksums.txt
       
       # - name: Upload artifacts (checksums.txt)
