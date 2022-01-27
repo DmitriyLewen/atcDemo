@@ -53,9 +53,9 @@ jobs:
       - name: Upload artifacts (bom.json)
         uses: actions/upload-artifact@v2
         with:
-          path: ./dist/**/trivy
-          path: ./dist/trivy_*checksums.txt
-          if-no-files-found: error
+          path: |
+          ./dist/**/trivy
+          ./dist/trivy_*checksums.txt
       
       # - name: Upload artifacts (checksums.txt)
       #   uses: actions/upload-artifact@v2
