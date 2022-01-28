@@ -50,7 +50,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: build --snapshot --rm-dist
+          args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
 
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
