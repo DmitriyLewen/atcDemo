@@ -52,13 +52,21 @@ jobs:
           version: v0.183.0
           args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
 
+      - name: Copy 
+
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
         uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-64bit
+          path: dist/trivy_canary_build_linux_amd64/trivy
+          if-no-files-found: error
+
+      - name: Upload artifacts (contribution files trivy_Linux-64bit)
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy_Linux-64bit
           path: |
-            dist/trivy_canary_build_linux_amd64/trivy
             README.md
             LICENSE
             contrib/*.tpl
