@@ -57,26 +57,42 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-64bit
-          path: ./dist/trivy_canary_build_linux_amd64/trivy
+          path: |
+            dist/trivy_canary_build_linux_amd64/trivy
+            README.md
+            LICENSE
+            contrib/*.tpl
           if-no-files-found: error
       
       - name: Upload artifacts (trivy_Linux-ARM64)
         uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-ARM64
-          path: ./dist/trivy_canary_build_linux_arm64/trivy
+          path: | 
+            dist/trivy_canary_build_linux_arm64/trivy
+            README.md
+            LICENSE
+            contrib/*.tpl
           if-no-files-found: error
 
       - name: Upload artifacts (trivy_macOS-64bit)
         uses: actions/upload-artifact@v2
         with:
           name: trivy_macOS-64bit
-          path: ./dist/trivy_canary_build_darwin_amd64/trivy
+          path: |
+            ./dist/trivy_canary_build_darwin_amd64/trivy
+            README.md
+            LICENSE
+            contrib/*.tpl
           if-no-files-found: error
 
       - name: Upload artifacts (trivy_macOS-ARM64)
         uses: actions/upload-artifact@v2
         with:
           name: trivy_macOS-ARM64
-          path: ./dist/trivy_canary_build_darwin_arm64/trivy
+          path: |
+            ./dist/trivy_canary_build_darwin_arm64/trivy
+            README.md
+            LICENSE
+            contrib/*.tpl
           if-no-files-found: error
