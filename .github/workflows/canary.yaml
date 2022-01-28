@@ -52,8 +52,6 @@ jobs:
           version: v0.183.0
           args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
 
-      - name: Copy 
-
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
         uses: actions/upload-artifact@v2
