@@ -54,10 +54,21 @@ jobs:
 
       - name: Copy contribution files for upload
         run: |
-          cp {README.md,LICENSE,contrib/*.tpl} dist/trivy_canary_build_darwin_amd64
-          cp {README.md,LICENSE,contrib/*.tpl} dist/trivy_canary_build_darwin_arm64
-          cp {README.md,LICENSE,contrib/*.tpl} dist/trivy_canary_build_linux_amd64
-          cp {README.md,LICENSE,contrib/*.tpl} dist/trivy_canary_build_linux_arm64
+          mkdir dist/trivy_canary_build_darwin_amd64/contrib
+          cp {README.md,LICENSE} dist/trivy_canary_build_darwin_amd64
+          cp contrib/*.tpl dist/trivy_canary_build_darwin_amd64/contrib
+
+          mkdir dist/trivy_canary_build_darwin_arm64/contrib
+          cp {README.md,LICENSE} dist/trivy_canary_build_darwin_arm64
+          cp contrib/*.tpl dist/trivy_canary_build_darwin_arm64/contrib
+
+          mkdir dist/trivy_canary_build_linux_amd64/contrib
+          cp {README.md,LICENSE} dist/trivy_canary_build_linux_amd64
+          cp contrib/*.tpl dist/trivy_canary_build_linux_amd64/contrib
+
+          mkdir dist/trivy_canary_build_linux_arm64/contrib
+          cp {README.md,LICENSE} dist/trivy_canary_build_linux_arm64
+          cp contrib/*.tpl dist/trivy_canary_build_linux_arm64/contrib
 
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
