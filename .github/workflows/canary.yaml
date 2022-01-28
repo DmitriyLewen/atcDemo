@@ -40,22 +40,22 @@ jobs:
           args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
 
       - name: Copy contribution files for upload
-        env: RELEASE_DIRS: "trivy_canary_build_darwin_amd64" "trivy_canary_build_darwin_arm64" "trivy_canary_build_linux_amd64" "trivy_canary_build_linux_arm64")
+        env: 
+          RELEASE_DIRS: "trivy_canary_build_darwin_amd64" "trivy_canary_build_darwin_arm64" "trivy_canary_build_linux_amd64" "trivy_canary_build_linux_arm64")
         run: |
           for dir in $RELEASE_DIRS;
             do
 	          mkdir dist/$dir/contrib
             cp {README.md,LICENSE} dist/$dir
-            cp contrib/*.tpl dist/$dir/contrib
+            cp contrib/*.tpl dist/$dir/contrib;
           done
 
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: trivy_Linux-64bit
           path: dist/trivy_canary_build_linux_amd64
-          if-no-files-found: error
       
       - name: Upload artifacts (trivy_Linux-ARM64)
         uses: actions/upload-artifact@v2
