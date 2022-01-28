@@ -43,8 +43,9 @@ jobs:
         run: |
           DIRS=("trivy_canary_build_darwin_amd64" "trivy_canary_build_darwin_arm64" "trivy_canary_build_linux_amd64" "trivy_canary_build_linux_arm64")
           for dir in ${DIRS[@]}; do
-            echo "1"
-            echo $dir
+            mkdir dist/$dir/contrib
+            cp {README.md,LICENSE} dist/$dir
+            cp contrib/*.tpl dist/$dir/contrib
           done
 
       # Upload artifacts 
