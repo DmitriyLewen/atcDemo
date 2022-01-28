@@ -42,7 +42,9 @@ jobs:
       - name: Copy contribution files for upload
         run: |
           DIRS=('trivy_canary_build_darwin_amd64','trivy_canary_build_darwin_arm64','trivy_canary_build_linux_amd64','trivy_canary_build_linux_arm64')
-          echo $DIRS
+          for dir in ${DIRS[@]}; do
+            echo $DIRS
+          done
 
       # Upload artifacts 
       - name: Upload artifacts (trivy_Linux-64bit)
