@@ -42,9 +42,9 @@ jobs:
       - name: Copy contribution files for upload
         run: |
           for dir in dist/*/; do
-          mkdir $dir/contrib
-          cp {README.md,LICENSE} $dir
-          cp contrib/*.tpl $dir/contrib
+            mkdir $dir/contrib
+            cp {README.md,LICENSE} $dir
+            cp contrib/*.tpl $dir/contrib
           done
 
       # Upload artifacts 
