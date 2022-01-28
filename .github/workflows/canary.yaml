@@ -51,7 +51,7 @@ jobs:
             do
 	          mkdir dist/$dir/contrib
             cp {README.md,LICENSE} dist/$dir
-            cp contrib/*.tpl dist/$dir/contrib;
+            cp contrib/*.tpl dist/$dir/contrib
           done
 
       # Upload artifacts 
