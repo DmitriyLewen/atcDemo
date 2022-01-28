@@ -40,13 +40,8 @@ jobs:
           args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
 
       - name: Copy contribution files for upload
-        env: 
-          DIRS: 
-            - 'trivy_canary_build_darwin_amd64'
-            - 'trivy_canary_build_darwin_arm64'
-            - 'trivy_canary_build_linux_amd64'
-            - 'trivy_canary_build_linux_arm64'
         run: |
+          DIRS=('trivy_canary_build_darwin_amd64' 'trivy_canary_build_darwin_arm64' 'trivy_canary_build_linux_amd64' 'trivy_canary_build_linux_arm64')
           echo $DIRS
 
       # Upload artifacts 
