@@ -11,6 +11,5 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: search
-        run: |
-          ls -ahl
+      - name: check version
+        run: go version
