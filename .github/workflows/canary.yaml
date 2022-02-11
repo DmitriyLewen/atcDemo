@@ -38,7 +38,6 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Release with snapshot
-        if: ${{ inputs.snapshot }}
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
