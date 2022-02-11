@@ -10,4 +10,4 @@ jobs:
     uses: ./.github/workflows/canary.yaml
     with:
       goreleaser_file: 'goreleaser-canary.yml'
-      snapshot: 'false'
+      snapshot: false
