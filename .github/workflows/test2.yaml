@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: TestsWebhook
-        run: printenv TEST_ENV
+        run: echo $TEST_ENV
