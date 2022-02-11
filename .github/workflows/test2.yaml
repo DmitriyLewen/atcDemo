@@ -121,6 +121,7 @@ jobs:
     name: test
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
     needs: [go-releaser]
+    if: always()
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
