@@ -13,4 +13,4 @@ jobs:
 
       - name: create
         run: |
-          "test" > test.txt 
+          echo "test" > test.txt 
