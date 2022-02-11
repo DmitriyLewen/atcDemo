@@ -11,7 +11,7 @@ workflows:
       - install:
           context:
             - org-global
-      - call-workflow-2
+      - call-workflow-2:
           context:
             - org-global
 
