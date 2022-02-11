@@ -37,8 +37,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - name: Release
+      - name: Release with snapshot
         if: ${{ inputs.snapshot }}
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: v0.183.0
+          args: build -f=${{ inputs.goreleaser_file }} --snapshot --rm-dist
+
+      - name: Release without snapshot
+        if: ${{ inputs.snapshot == false}}
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
