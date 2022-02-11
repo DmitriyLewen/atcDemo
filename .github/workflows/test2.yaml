@@ -116,3 +116,16 @@ jobs:
           args: ${{ inputs.command }} -f=${{ inputs.file }} ${{ inputs.options }}
         env:
           GITHUB_TOKEN: ${{ secrets.ORG_REPO_TOKEN }}
+
+  test:
+    name: test
+    runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
+    needs: [go-releaser]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: check files
+        run: ls -ahl
+
