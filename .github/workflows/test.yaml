@@ -11,5 +11,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: set ENV
-        run: export TEST_ENV=test
+      - name: create
+        run: |
+          "test" > test.txt 
