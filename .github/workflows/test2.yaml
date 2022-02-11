@@ -1,0 +1,14 @@
+name: test2
+on:
+  workflow_call:
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: TestsWebhook
+        run: go test -coverprofile=tests_cover.html -v ./apiserver
+
+      - name: TestsGitHubService
+        run: go test -coverprofile=tests_cover.html -v ./githubservice

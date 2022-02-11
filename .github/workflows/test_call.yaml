@@ -1,0 +1,12 @@
+name: test_call
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  call-workflow-1:
+    uses: ./.github/workflows/test.yaml
+  call-workflow-2:
+    uses: ./.github/workflows/test2.yaml
