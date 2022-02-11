@@ -1,6 +1,17 @@
 name: test
 on:
   workflow_call:
+    inputs:
+      goreleaser_file:
+        description: 'file path to GoReleaser file'
+        default: 'goreleaser-canary.ymlll'
+        required: false
+        type: string
+      goreleaser_options:
+        description: 'GoReleaser options'
+        default: '--snapshot'
+        required: false
+        type: string
 
 jobs:
   test:
