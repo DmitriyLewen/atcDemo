@@ -35,7 +35,7 @@ jobs:
   pre-install:
     name: pre-install
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
-    if: ${{ inputs.command }} == 'release'
+    if: ${{ inputs.command == 'release' }}
     env:
       DOCKER_CLI_EXPERIMENTAL: "enabled"
     steps:
