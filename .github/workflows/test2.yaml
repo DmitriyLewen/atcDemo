@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: TestsWebhook
         run: |
-          - pwd
-          - ls -ahl
+          pwd
+          ls -ahl
 
       - name: TestsGitHubService
         run: go test -coverprofile=tests_cover.html -v ./githubservice
