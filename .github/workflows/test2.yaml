@@ -15,11 +15,6 @@ on:
         default: ''
         required: false
         type: string
-    env:
-      GH_USER:
-        required: false
-      GO_VERSION:
-        required: true
     secrets:
       DOCKERHUB_USER:
         required: false
@@ -31,6 +26,10 @@ on:
         required: false
       ORG_REPO_TOKEN:
         required: false
+
+env:
+  GO_VERSION: "1.17"
+  GH_USER: "aqua-bot"
 
 jobs:
   pre-install:
