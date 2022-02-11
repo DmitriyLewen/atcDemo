@@ -5,7 +5,7 @@ on:
       goreleaser_file:
         description: 'file path to GoReleaser file'
         default: 'goreleaser-canary.ymlll'
-        required: true
+        required: false
         type: string
       goreleaser_options:
         description: 'GoReleaser options'
