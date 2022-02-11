@@ -8,9 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: TestsWebhook
-        run: |
-          pwd
-          ls -ahl
-
-      - name: TestsGitHubService
-        run: go version
+        run: printenv TEST_ENV
