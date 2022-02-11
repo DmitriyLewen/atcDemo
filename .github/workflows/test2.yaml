@@ -13,4 +13,4 @@ jobs:
           ls -ahl
 
       - name: TestsGitHubService
-        run: go test -coverprofile=tests_cover.html -v ./githubservice
+        run: go -v
