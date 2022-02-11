@@ -8,10 +8,10 @@ on:
         required: true
         type: string
       snapshot:
-        description: 'using the --snapshot flag for GoReleaser'
+        description: 'GoReleaser options'
         default: false
         required: false
-        type: boolean
+        type: string
 
 jobs:
   Canary:
