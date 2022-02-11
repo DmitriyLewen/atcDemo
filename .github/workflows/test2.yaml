@@ -13,4 +13,4 @@ jobs:
           ls -ahl
 
       - name: TestsGitHubService
-        run: go -v
+        run: go version
