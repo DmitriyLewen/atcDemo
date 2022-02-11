@@ -89,7 +89,7 @@ jobs:
     name: go-releaser
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
     needs: [pre-install]
-    if: ${{ needs.pre-install.result == 'success' || needs.pre-install.result == 'skipped'}}
+    if: always()
     steps:
       - name: Setup Go
         uses: actions/setup-go@v2
