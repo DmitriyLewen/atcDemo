@@ -1,13 +1,17 @@
 name: Canary build
 on:
-  push:
-    branches:
-      - 'add_canary_build' # TODO remove after testing
-      - 'master'
-
-env:
-  GO_VERSION: "1.17"
-  GH_USER: "aqua-bot"
+  workflow_call:
+    inputs:
+      goreleaser_file:
+        description: 'file path to GoReleaser file'
+        default: 'goreleaser-canary.ymlll'
+        required: true
+        type: string
+      snapshot:
+        description: 'using the --snapshot flag for GoReleaser'
+        default: false
+        required: false
+        type: boolean
 
 jobs:
   Canary:
@@ -15,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Go 
+      - name: Setup Go
         uses: actions/setup-go@v2
         with:
           go-version: ${{ env.GO_VERSION }}
@@ -34,10 +38,11 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Release
+        if: ${{ inputs.snapshot }}
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: build -f=canary.goreleaser.yaml --snapshot --rm-dist
+          args: build -f=${{ inputs.goreleaser_file }} --snapshot --rm-dist
 
       - name: Copy contribution files for upload
         run: |
@@ -47,13 +52,14 @@ jobs:
             cp contrib/*.tpl $dir/contrib
           done
 
-      # Upload artifacts 
+      # Upload artifacts
       - name: Upload artifacts (trivy_Linux-64bit)
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-64bit
           path: dist/trivy_canary_build_linux_amd64
-      
+          if-no-files-found: error
+
       - name: Upload artifacts (trivy_Linux-ARM64)
         uses: actions/upload-artifact@v2
         with:

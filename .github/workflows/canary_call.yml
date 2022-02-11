@@ -1,0 +1,13 @@
+name: Call a reusable workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  call-workflow-passing-data:
+    uses: .github/workflows/canary.yaml@master
+    with:
+      goreleaser_file: 'goreleaser-canary.yml'
+      snapshot: 'false'
