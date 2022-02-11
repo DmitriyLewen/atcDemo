@@ -15,4 +15,4 @@ jobs:
 
   call-workflow-2:
     needs: [call-workflow-1]
-    uses: ./.github/workflows/test1.yaml
+    uses: ./.github/workflows/test.yaml
