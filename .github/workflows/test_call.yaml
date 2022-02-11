@@ -1,4 +1,4 @@
-name: test_call
+name: Call a reusable workflow
 
 on:
   push:
@@ -6,19 +6,7 @@ on:
       - master
 
 jobs:
-  test-call:
-    name: Canary
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: call-workflow-1
-        uses: ./.github/workflows/test.yaml
-
-      - name: call-workflow-2
-        uses: ./.github/workflows/test2.yaml
-        with:
-          fetch-depth: 0
+  call-workflow-passing-data:
+    uses: ./.github/workflows/test.yaml
+    with:
+      goreleaser_options: '--snapshot'
