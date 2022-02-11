@@ -9,4 +9,4 @@ jobs:
   call-workflow-passing-data:
     uses: ./.github/workflows/canary.yaml
     with:
-      snapshot: '--snapshot'
+      goreleaser_options: '--snapshot'

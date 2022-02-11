@@ -7,9 +7,9 @@ on:
         default: 'goreleaser-canary.ymlll'
         required: true
         type: string
-      snapshot:
+      goreleaser_options:
         description: 'GoReleaser options'
-        default: false
+        default: '--snapshot'
         required: false
         type: string
 
@@ -42,14 +42,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v2
         with:
           version: v0.183.0
-          args: build -f=${{ inputs.goreleaser_file }} --snapshot --rm-dist
-
-      - name: Release without snapshot
-        if: ${{ inputs.snapshot == false}}
-        uses: goreleaser/goreleaser-action@v2
-        with:
-          version: v0.183.0
-          args: build -f=${{ inputs.goreleaser_file }} --snapshot --rm-dist
+          args: build -f=${{ inputs.goreleaser_file }} ${{ inputs.goreleaser_options }} --rm-dist
 
       - name: Copy contribution files for upload
         run: |
