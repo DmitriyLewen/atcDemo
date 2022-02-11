@@ -6,9 +6,10 @@ on:
       - master
 
 jobs:
-  call-workflow-passing-data:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/test.yaml
-        with:
-          goreleaser_options: '--snapshot'
+  call-workflow-1:
+    uses: ./.github/workflows/test.yaml
+    with:
+      goreleaser_options: '--snapshot'
+  call-workflow-2:
+    needs: [call-workflow-1]
+    uses: ./.github/workflows/test2.yaml
