@@ -5,6 +5,16 @@ on:
     branches:
       - master
 
+workflows:
+  my-workflow:
+    jobs:
+      - install:
+          context:
+            - org-global
+      - call-workflow-2
+          context:
+            - org-global
+
 jobs:
   install:
     runs-on: ubuntu-18.04
@@ -18,5 +28,5 @@ jobs:
     uses: ./.github/workflows/test.yaml
 
   call-workflow-2:
-    needs: [call-workflow-1]
+    needs: [call-workflow-1, install]
     uses: ./.github/workflows/test2.yaml
