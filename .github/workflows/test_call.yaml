@@ -14,3 +14,5 @@ jobs:
       goreleaser_options: '--snapshot --rm-dist'
   call-workflow-2:
     uses: ./.github/workflows/test.yaml
+    with:
+      TEST_SECRET: ${{ secrets.TEST_SECRET }}
