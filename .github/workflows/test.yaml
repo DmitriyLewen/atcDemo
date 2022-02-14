@@ -10,5 +10,7 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
-      - name: files
-        run: echo $TEST_SECRET
+      - name: secret1
+        run: echo ${{ secrets.TEST_SECRET}}
+      - name: secret2
+        run: echo ${{ secrets.TEST_SECRETT}}
