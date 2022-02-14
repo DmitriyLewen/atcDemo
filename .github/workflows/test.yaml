@@ -1,16 +1,14 @@
 name: test
 on:
   workflow_call:
-
+    secrets:
+      TEST_SECRET:
+        required: false
 
 jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
       - name: files
-        run: ls -ahl
+        run: echo $TEST_SECRET
