@@ -9,6 +9,6 @@ jobs:
   call-workflow-1:
     uses: ./.github/workflows/test2.yaml
     with:
-      file: goreleaser-canary.yml
-      command: 'build'
-      options: '--snapshot --rm-dist'
+      goreleaser_file: goreleaser-canary.yml
+      goreleaser_command: 'build'
+      goreleaser_options: '--snapshot --rm-dist'
