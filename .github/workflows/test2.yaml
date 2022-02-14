@@ -123,3 +123,44 @@ jobs:
       - name: Create deb repository # Release
         if: ${{ inputs.goreleaser_command == 'release' }}
         run: ci/deploy-deb.sh
+      - name: Copy contribution files for upload # Build
+        if: ${{ inputs.goreleaser_command == 'build' }}
+        run: |
+          for dir in dist/*/; do
+            mkdir $dir/contrib
+            cp {README.md,LICENSE} $dir
+            cp contrib/*.tpl $dir/contrib
+          done
+
+      # Upload artifacts
+      - name: Upload artifacts (trivy_Linux-64bit) # Build
+        if: ${{ inputs.goreleaser_command == 'build' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy_Linux-64bit
+          path: dist/trivy_canary_build_linux_amd64
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_Linux-ARM64) # Build
+        if: ${{ inputs.goreleaser_command == 'build' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy_Linux-ARM64
+          path: dist/trivy_canary_build_linux_arm64
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_macOS-64bit) # Build
+        if: ${{ inputs.goreleaser_command == 'build' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy_macOS-64bit
+          path: dist/trivy_canary_build_darwin_amd64
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_macOS-ARM64) # Build
+        if: ${{ inputs.goreleaser_command == 'build' }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: trivy_macOS-ARM64
+          path: dist/trivy_canary_build_darwin_arm64
+          if-no-files-found: error
