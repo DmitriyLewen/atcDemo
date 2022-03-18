@@ -20,9 +20,6 @@ var UnmarshalBuildGradle = func(content []byte) error {
 	}
 	vers := res[1]
 	log.Println(vers)
-	return nil
-}
 
-func Sum(a, b, c int) int {
-	return a + b + c
+	return nil
 }
