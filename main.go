@@ -19,6 +19,7 @@ var UnmarshalBuildGradle = func(content []byte) error {
 		return errors.New("err")
 	}
 	vers := res[1]
+
 	log.Println(vers)
 
 	return nil
