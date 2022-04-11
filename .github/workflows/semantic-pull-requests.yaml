@@ -26,3 +26,4 @@ jobs:
             test
             build
             chore
+          scopes: (^(?![A-Z]).+$)
