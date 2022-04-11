@@ -18,15 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: amannn/action-semantic-pull-request@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with: |
-        feat
-        fix
-        docs
-        style
-        refactor
-        perf
-        test
-        build
-        chore
+        with: | 
+          feat
+          fix
+          docs
+          style
+          refactor
+          perf
+          test
+          build
+          chore
