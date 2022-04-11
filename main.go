@@ -13,7 +13,7 @@ func main() {
 }
 
 var UnmarshalBuildGradle = func(content []byte) error {
-	regex, _ := regexp.Compile(`versionName "([^\t\n\f\r]+)"`)
+	regex, _ := regexp.Compile(`versionName "([^\t\n\f\r]*)"`)
 	res := regex.FindStringSubmatch(string(content))
 	if len(res) == 0 {
 		return errors.New("err")
