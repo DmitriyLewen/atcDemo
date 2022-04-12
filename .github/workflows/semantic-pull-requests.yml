@@ -16,7 +16,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          - types:
+          types:
               feat
               fix
               docs
@@ -29,14 +29,14 @@ jobs:
               chore
               revert
               BREAKING
-          - scopes:
-            # checks
-            - vuln
-            - misconf
-            - secret
-            # mode
-            - image
-            - fs
-            - repo
-            - sbom
-            - server
+          scopes:
+              # checks
+              vuln
+              misconf
+              secret
+              # mode
+              image
+              fs
+              repo
+              sbom
+              server
