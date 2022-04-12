@@ -34,7 +34,7 @@ jobs:
             misconf
             secret 
             
-            image # mode
+            image
             fs
             repo
             sbom
