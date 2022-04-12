@@ -30,13 +30,12 @@ jobs:
             revert
             BREAKING
           scopes:
-            # checks
-            "vuln"
-            "misconf"
-            "secret"
-            # mode
-            "image"
-            "fs"
-            "repo"
-            "sbom"
-            "server"
+            vuln # checks
+            misconf
+            secret 
+            
+            image # mode
+            fs
+            repo
+            sbom
+            server
