@@ -31,12 +31,12 @@ jobs:
             BREAKING
           scopes:
             # checks
-            - vuln
-            - misconf
-            - secret
+            "vuln"
+            "misconf"
+            "secret"
             # mode
-            - image
-            - fs
-            - repo
-            - sbom
-            - server
+            "image"
+            "fs"
+            "repo"
+            "sbom"
+            "server"
