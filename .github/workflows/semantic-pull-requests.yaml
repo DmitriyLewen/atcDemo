@@ -1,4 +1,4 @@
-name: "Lint PR"
+name: "Lint PR title"
 
 on:
   pull_request_target:
@@ -16,7 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          types: |
+          types:
+            # test
             feat
             fix
             docs
@@ -25,5 +26,61 @@ jobs:
             perf
             test
             build
+            ci
             chore
-          scopes: (^(?![A-Z]).+$)
+            revert
+            BREAKING
+
+          scopes: |
+            vuln
+            misconf
+            secret
+
+            image
+            fs
+            repo
+            sbom
+            server
+
+            alpine
+            redhat
+            alma
+            rocky
+            mariner
+            oracle
+            debian
+            ubuntu
+            amazon
+            suse
+            photon
+            distroless
+
+            ruby
+            php
+            python
+            nodejs
+            rust
+            dotnet
+            java
+            go
+            
+            os
+            lang
+
+            kubernetes
+            dockerfile
+            terraform
+            cloudformation
+
+            docker
+            podman
+            containerd
+            oci
+
+            cli
+            flag
+
+            helm
+            report
+            db
+            deps
