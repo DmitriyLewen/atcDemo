@@ -31,17 +31,18 @@ jobs:
             revert
             BREAKING
 
-          scopes: |
+          scopes:
+            # checks
             vuln
             misconf
             secret
-
+            # mode
             image
             fs
             repo
             sbom
             server
-
+            # os
             alpine
             redhat
             alma
@@ -54,7 +55,7 @@ jobs:
             suse
             photon
             distroless
-
+            # language
             ruby
             php
             python
@@ -63,23 +64,23 @@ jobs:
             dotnet
             java
             go
-            
+            # vuln
             os
             lang
-
+            # config
             kubernetes
             dockerfile
             terraform
             cloudformation
-
+            # container
             docker
             podman
             containerd
             oci
-
+            # cli
             cli
             flag
-
+            # others
             helm
             report
             db
