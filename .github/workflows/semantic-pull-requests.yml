@@ -34,3 +34,52 @@ jobs:
             vuln
             misconf
             secret
+            # mode
+            image
+            fs
+            repo
+            sbom
+            server
+            # os
+            alpine
+            redhat
+            alma
+            rocky
+            mariner
+            oracle
+            debian
+            ubuntu
+            amazon
+            suse
+            photon
+            distroless
+            # language
+            ruby
+            php
+            python
+            nodejs
+            rust
+            dotnet
+            java
+            go
+            # vuln
+            os
+            lang
+            # config
+            kubernetes
+            dockerfile
+            terraform
+            cloudformation
+            # container
+            docker
+            podman
+            containerd
+            oci
+            # cli
+            cli
+            flag
+            # others
+            helm
+            report
+            db
+            deps
