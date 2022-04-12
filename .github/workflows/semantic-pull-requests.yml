@@ -30,10 +30,12 @@ jobs:
             revert
             BREAKING
           scopes:
+            ## comment
             vuln
             misconf
             secret 
             
+            ## comment2
             image
             fs
             repo
