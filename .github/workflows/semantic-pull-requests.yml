@@ -29,13 +29,14 @@ jobs:
             chore
             revert
             BREAKING
-          scopes: # checks
-            vuln
-            misconf
-            secret
+          scopes:
+            - # checks
+            - vuln
+            - misconf
+            - secret
             # mode
-            image
-            fs
-            repo
-            sbom
-            server
+            - image
+            - fs
+            - repo
+            - sbom
+            - server
