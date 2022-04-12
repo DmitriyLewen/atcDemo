@@ -30,7 +30,7 @@ jobs:
             revert
             BREAKING
           scopes:
-            vuln # checks
+            vuln
             misconf
             secret 
             
