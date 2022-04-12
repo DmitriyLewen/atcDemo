@@ -29,3 +29,8 @@ jobs:
             chore
             revert
             BREAKING
+          scopes:
+            # checks
+            vuln
+            misconf
+            secret
