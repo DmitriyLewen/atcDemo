@@ -44,16 +44,37 @@ jobs:
             mkdir $dir/contrib
             cp {README.md,LICENSE} $dir
             cp contrib/*.tpl $dir/contrib
+            cd $dir
+            tar -cvf trivy.tar *
+            cd ../..
           done
-
-      - name: Tar files
-        run: tar -cvf my_files.tar dist/trivy_canary_build_linux_amd64
 
       # Upload artifacts
       - name: Upload artifacts (trivy_Linux-64bit)
         uses: actions/upload-artifact@v3
         with:
           name: trivy_Linux-64bit
-          path: my_files.tar
+          path: dist/trivy_canary_build_linux_amd64/trivy.tar
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_Linux-ARM64)
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy_Linux-ARM64
+          path: dist/trivy_canary_build_linux_arm64/trivy.tar
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_macOS-64bit)
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy_macOS-64bit
+          path: dist/trivy_canary_build_darwin_amd64/trivy.tar
+          if-no-files-found: error
+
+      - name: Upload artifacts (trivy_macOS-ARM64)
+        uses: actions/upload-artifact@v3
+        with:
+          name: trivy_macOS-ARM64
+          path: dist/trivy_canary_build_darwin_arm64/trivy.tar
           if-no-files-found: error
 
