@@ -11,6 +11,7 @@ jobs:
       goreleaser_mode: 'release'
       goreleaser_file: goreleaser.yml
       goreleaser_options: '--rm-dist --timeout 60m'
+    secrets: inherit
 
   deploy-rpm-deb-packages:
     name: deploy rpm/dep
