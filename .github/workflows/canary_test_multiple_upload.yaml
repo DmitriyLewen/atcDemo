@@ -1,4 +1,4 @@
-name: canaty_test_multiple_upload
+name: canary_test_multiple_upload
 on:
   workflow_dispatch:
 
