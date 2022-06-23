@@ -17,6 +17,7 @@ jobs:
 
   deploy-rpm-deb-packages:
     name: deploy rpm/dep
+    needs: release
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
     steps:
       - name: Cache Trivy binaries
