@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache Go modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/go/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
@@ -27,10 +27,10 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Release with snapshot
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v3
         with:
-          version: v0.183.0
-          args: build -f=${{ inputs.goreleaser_file }} ${{ inputs.goreleaser_options }} --rm-dist
+          version: v1.4.1
+          args: build -f=goreleaser-canary.yml --snapshot --rm-dist
 
       - name: Copy contribution files for upload
         run: |
