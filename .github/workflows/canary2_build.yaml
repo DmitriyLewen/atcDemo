@@ -128,7 +128,9 @@ jobs:
         uses: actions/cache@v3.0.2
         with:
           path: dist/
-          key: ${{ steps.bins-cache-key.outputs.binaries-cache-key }}
+          key: ${{ runner.os }}-bins-${GITHUB_SHA}
+          restore-keys: |
+            ${{ runner.os }}-bins-${GITHUB_SHA}
 
       - name: test-print-cache-key
         run: echo ${GITHUB_SHA}
