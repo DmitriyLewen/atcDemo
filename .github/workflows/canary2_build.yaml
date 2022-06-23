@@ -116,4 +116,7 @@ jobs:
         uses: actions/cache@v3.0.2
         with:
           path: dist/
-          key: ${{ runner.os }}-bins-${{github.sha}}
+          # use 'github.sha' to create a unique cache folder for each run.
+          # use 'github.workflow' to create a unique cache folder if some runs have same commit sha.
+          # e.g. build and release runs
+          key: ${{ runner.os }}-bins-${{github.workflow}}-${{github.sha}}
