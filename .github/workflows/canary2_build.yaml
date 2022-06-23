@@ -15,10 +15,6 @@ on:
         default: ''
         required: false
         type: string
-    outputs:
-      binaries-cache-key:
-        description: "cache key for get Trivy binaries"
-        value: ${{ jobs.release.steps.bins-cache-key.outputs.bins-cache-key }}
 
 env:
   GO_VERSION: "1.18"
@@ -34,9 +30,6 @@ jobs:
       id-token: write # For cosign
       packages: write # For GHCR
       contents: read  # Not required for public repositories, but for clarity
-    outputs:
-      # needed to save in reusable workflow output
-      bins-cache-key: ${{ steps.bins-cache-key.outputs.bins-cache-key }}
     steps:
         # Only for release
       - name: Cosign install
@@ -111,7 +104,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - name: Release
+      - name: Goreleaser
         uses: goreleaser/goreleaser-action@v3
         with:
           version: v1.4.1
@@ -119,18 +112,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ORG_REPO_TOKEN }}
 
-        # cache will be used to get binaries in caller workflow
-      - name: generate binaries cache key
-        id: bins-cache-key
-        run: echo "::set-output name=binaries-cache-key::${{ runner.os }}-bins-${{ hashFiles('dist/metadata.json') }}"
-
       - name: Cache Trivy binaries
         uses: actions/cache@v3.0.2
         with:
           path: dist/
           key: ${{ runner.os }}-bins-${GITHUB_SHA}
-          restore-keys: |
-            ${{ runner.os }}-bins-${GITHUB_SHA}
-
-      - name: test-print-cache-key
-        run: echo ${GITHUB_SHA}

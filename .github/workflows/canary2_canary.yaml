@@ -52,6 +52,3 @@ jobs:
           name: trivy_macOS-ARM64
           path: dist/trivy_*_macOS-ARM64.tar.gz
           if-no-files-found: error
-
-      - name: test-print-cache-key
-        run: echo ${GITHUB_SHA}
