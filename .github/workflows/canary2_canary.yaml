@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  release:
+  build_binaries:
     uses: ./.github/workflows/canary2_build.yaml
     with:
       goreleaser_mode: 'canary_build'
@@ -15,15 +15,15 @@ jobs:
 
   upload-binaries:
     name:   upload-binaries
+    needs: build_binaries
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
     steps:
       - name: Cache Trivy binaries
         uses: actions/cache@v3.0.2
         with:
           path: dist/
-          key: ${{ runner.os }}-bins-${{ hashFiles('dist/metadata.json') }}
           restore-keys: |
-            ${{ runner.os }}-bins-
+            ${{ runner.os }}-bins
 
         # Upload artifacts
       - name: Upload artifacts (trivy_Linux-64bit)
