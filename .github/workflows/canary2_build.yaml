@@ -122,7 +122,7 @@ jobs:
         # cache will be used to get binaries in caller workflow
       - name: generate binaries cache key
         id: bins-cache-key
-        run: echo "::set-output name=bins-cache-key::${{ runner.os }}-bins-${{ hashFiles('dist/metadata.json') }}"
+        run: echo "::set-output name=binaries-cache-key::${{ runner.os }}-bins-${{ hashFiles('dist/metadata.json') }}"
 
       - name: Cache Trivy binaries
         uses: actions/cache@v3.0.2
