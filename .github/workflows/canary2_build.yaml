@@ -117,6 +117,6 @@ jobs:
         with:
           path: dist/
           # use 'github.sha' to create a unique cache folder for each run.
-          # use 'github.workflow' to create a unique cache folder if some runs have same commit sha.
+          # use 'github.run_attempt' to create a unique cache folder if some runs have same commit sha.
           # e.g. build and release runs
-          key: ${{ runner.os }}-bins-${{github.workflow}}-${{github.sha}}
+          key: ${{ runner.os }}-bins-${{github.run_attempt}}-${{github.sha}}
