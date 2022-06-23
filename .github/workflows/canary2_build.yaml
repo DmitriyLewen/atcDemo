@@ -18,7 +18,7 @@ on:
     outputs:
       binaries-cache-key:
         description: "cache key for get Trivy binaries"
-        value: ${{ jobs.release.outputs.bins-cache-key }}
+        value: ${{ jobs.release.steps.bins-cache-key.outputs.bins-cache-key }}
 
 env:
   GO_VERSION: "1.18"
