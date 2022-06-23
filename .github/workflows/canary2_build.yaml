@@ -131,4 +131,4 @@ jobs:
           key: ${{ steps.bins-cache-key.outputs.binaries-cache-key }}
 
       - name: test-print-cache-key
-        run: echo ${{ steps.bins-cache-key.outputs.binaries-cache-key }}
+        run: echo ${GITHUB_SHA}
