@@ -34,8 +34,6 @@ jobs:
       id-token: write # For cosign
       packages: write # For GHCR
       contents: read  # Not required for public repositories, but for clarity
-    outputs:
-      binaries-cache-key: ${{ steps.
     steps:
         # Only for release
       - name: Cosign install
