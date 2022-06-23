@@ -74,3 +74,11 @@ jobs:
         with:
           path: dist/*
           if-no-files-found: error
+
+      - name: Upload artifacts (multiple paths)
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            dist/trivy_canary_build_darwin_arm64
+            dist/trivy_canary_build_darwin_amd64
+          if-no-files-found: error
