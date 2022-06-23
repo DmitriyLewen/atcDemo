@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    uses: .github/workflows/canary2_build.yaml
+    uses: ./.github/workflows/canary2_build.yaml
     with:
       goreleaser_mode: 'canary_build'
       goreleaser_file: goreleaser-canary.yml
