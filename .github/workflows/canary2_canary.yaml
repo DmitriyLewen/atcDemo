@@ -26,7 +26,6 @@ jobs:
 
         # Upload artifacts
       - name: Upload artifacts (trivy_Linux-64bit)
-        if: ${{ inputs.goreleaser_command == 'build' }}
         uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-64bit
@@ -34,7 +33,6 @@ jobs:
           if-no-files-found: error
 
       - name: Upload artifacts (trivy_Linux-ARM64)
-        if: ${{ inputs.goreleaser_command == 'build' }}
         uses: actions/upload-artifact@v2
         with:
           name: trivy_Linux-ARM64
@@ -42,7 +40,6 @@ jobs:
           if-no-files-found: error
 
       - name: Upload artifacts (trivy_macOS-64bit)
-        if: ${{ inputs.goreleaser_command == 'build' }}
         uses: actions/upload-artifact@v2
         with:
           name: trivy_macOS-64bit
@@ -50,7 +47,6 @@ jobs:
           if-no-files-found: error
 
       - name: Upload artifacts (trivy_macOS-ARM64)
-        if: ${{ inputs.goreleaser_command == 'build' }}
         uses: actions/upload-artifact@v2
         with:
           name: trivy_macOS-ARM64
