@@ -18,7 +18,7 @@ jobs:
     needs: build_binaries
     runs-on: ubuntu-18.04 # 20.04 doesn't provide createrepo for now
     steps:
-      - name: Cache Trivy binaries
+      - name: Restore Trivy binaries from cache
         uses: actions/cache@v3.0.2
         with:
           path: dist/
