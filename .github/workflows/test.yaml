@@ -27,5 +27,5 @@ jobs:
 
       - name: Push image
         run: |
-          docker save dmitriylewen/test2:ci test.tar
+          docker save dmitriylewen/test2:ci > test.tar
           crane push test.tar dmitriylewen/test2:ci
