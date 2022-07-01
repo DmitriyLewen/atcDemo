@@ -22,7 +22,9 @@ jobs:
           username: DmitriyLewen
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Crane test
+      - name: Install crane
         uses: imjasonh/setup-crane@v0.1
+
+      - name: Push image
         run: |
           crane push dmitriylewen/test2:ci dmitriylewen/test2:ci
