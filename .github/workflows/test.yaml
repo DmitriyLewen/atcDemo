@@ -32,7 +32,7 @@ jobs:
 
       - name: Push image
         run: |
-          docker save dmitriylewen/test2:amd64 > amd64.tar
-          docker save dmitriylewen/test2:arm64 > arm64.tar
+          docker export dmitriylewen/test2:amd64 > amd64.tar
+          docker export dmitriylewen/test2:arm64 > arm64.tar
           crane auth login index.docker.io -u "${{ secrets.DOCKERHUB_USER }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
           crane push amd64.tar,arm64.tar dmitriylewen/test2:latest --index --platform linux/amd64,linux/arm64
