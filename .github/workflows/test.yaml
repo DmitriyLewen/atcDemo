@@ -22,9 +22,7 @@ jobs:
           username: DmitriyLewen
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test retag and pushing single destination image
-        uses: akhilerm/tag-push-action@v2.0.0
-        with:
-          src: dmitriylewen/test2:ci
-          dst: |
-            ghcr.io/dmitriylewen/atcdemo:test
+      - name: Crane test
+        uses: imjasonh/setup-crane@v0.1
+        run: |
+          crane push dmitriylewen/test2:ci dmitriylewen/test2:ci
