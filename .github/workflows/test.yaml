@@ -1,16 +1,30 @@
-name: test
-on:
-  workflow_call:
-    secrets:
-      TEST_SECRET:
-        required: false
+name: Tests
+
+on: ['push']
 
 jobs:
-  test:
-    name: Run Tests
+  test1:
+    name: Test push
     runs-on: ubuntu-latest
     steps:
-      - name: secret1
-        run: echo ${{ secrets.TEST_SECRET}}
-      - name: secret2
-        run: echo ${{ secrets.TEST_SECRETT}}
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: create image
+        run: |
+          echo "FROM hello-world" > Dockerfile
+          docker build -t dmitriylewen/test2:ci .
+          docker images
+      - name: Login ghcr
+        uses: docker/login-action@v1
+        with:
+          registry: 'ghcr.io'
+          username: DmitriyLewen
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Test retag and pushing single destination image
+        uses: akhilerm/tag-push-action@experiment
+        with:
+          src: dmitriylewen/test2:ci
+          dst: |
+            ghcr.io/dmitriylewen/atcDemo:test
