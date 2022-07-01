@@ -27,4 +27,4 @@ jobs:
         with:
           src: dmitriylewen/test2:ci
           dst: |
-            ghcr.io/dmitriylewen/atcDemo:test
+            ghcr.io/dmitriylewen/atcdemo:test
