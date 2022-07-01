@@ -27,9 +27,8 @@ jobs:
 
       - name: Push image
         env:
-          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
           docker save dmitriylewen/test2:ci > test.tar
-          crane auth login index.docker.io -u "$DOCKERHUB_USER" -p "$DOCKERHUB_TOKEN"
+          crane auth login index.docker.io -u "${{ secrets.DOCKERHUB_USER }}" -p "$DOCKERHUB_TOKEN"
           crane push test.tar dmitriylewen/test2:ci
