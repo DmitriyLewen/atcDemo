@@ -31,6 +31,8 @@ jobs:
 
       - name: Push image
         run: |
+          docker manifest create dmitriylewen/trivy:canary-amd64
+          docker manifest create dmitriylewen/trivy:canary-arm64
           docker manifest create \
           dmitriylewen/trivy:canary \
           --amend dmitriylewen/trivy:canary-amd64 \
