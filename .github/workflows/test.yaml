@@ -42,6 +42,9 @@ jobs:
           --amend dmitriylewen/trivy:canary-arm64
           docker manifest push dmitriylewen/trivy:canary
           
+          docker push ghcr.io/dmitriylewen/trivy:canary-amd64
+          docker push ghcr.io/dmitriylewen/trivy:canary-arm64
+          
           docker manifest create \
           ghcr.io/dmitriylewen/trivy/trivy:canary \
           --amend ghcr.io/dmitriylewen/trivy:canary-amd64 \
